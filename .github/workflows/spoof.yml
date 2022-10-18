@@ -26,27 +26,11 @@ on:
             description: 'argument'     
             required: false
 jobs:
-  Authorization:
-    name: Authorization
-    runs-on: blossom 
-    outputs:
-      args: ${{ env.args }}
-      
-    # This job only runs for pull request comments
-    if: |
-         contains( 'akchamps,Ranjeet-Nvidia,', format('{0},', github.actor)) && 
-         github.event.comment.body == '/spoof-blossom-ci'  
-    steps:
-      - name: Check if comment is issued by authorized person
-        run: blossom-ci
-        env:
-          OPERATION: 'AUTH'
-          REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          REPO_KEY_DATA: ${{ secrets.BLOSSOM_KEY }}
+
 
   Job-trigger:
     name: Start ci job
-    needs: [Authorization]
+    #needs: [Authorization]
     runs-on: blossom
     steps:
       - name: Start ci job
