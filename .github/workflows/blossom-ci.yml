@@ -90,9 +90,6 @@ jobs:
           OPERATION: 'START-CI-JOB'
           CI_SERVER: ${{ secrets.CI_SERVER }}
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Test 
-        run: echo Ranjeet
-        shell: bash 
               
   Upload-Log:
     name: Upload log
